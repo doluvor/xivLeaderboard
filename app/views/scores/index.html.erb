@@ -1,4 +1,4 @@
 <h1>Scores#index</h1>
 <% @scores.each do |score| %>
-<div>Score <%= score.dps %></div>
+<div>Player: <%= score.player %> -- DPS: <%= score.dps %> -- Duration: <%= score.durationS %> -- enemy: <%= score.enemy %></div>
 <% end %>
