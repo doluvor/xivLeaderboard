@@ -1,4 +1,19 @@
 <h1>Scores#index</h1>
+<div class="container">
+<table class="table table-striped table-bordered">
+<tr>
+<td>Player</td>
+<td>DPS</td>
+<td>Duration</td>
+<td>Enemy</td>
+</tr>
 <% @scores.each do |score| %>
-<div>Player: <%= score.player %> -- DPS: <%= score.dps %> -- Duration: <%= score.durationS %> -- enemy: <%= score.enemy %></div>
+<tr>
+<td><%= score.player %></td>
+<td><%= score.dps %></td>
+<td><%= score.durationS %></td>
+<td><%= score.enemy %></td>
+</tr>
 <% end %>
+</table>
+</div>
