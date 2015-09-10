@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root 'scores#index'
+
   get 'scores/createPlain' => 'scores#createPlain'
 
   post 'scores/create' => 'scores#create'
