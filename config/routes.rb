@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
-  get 'scores/create'
+
+  root 'scores#index'
+
+  get 'scores/createPlain' => 'scores#createPlain'
+
+  post 'scores/create' => 'scores#create'
 
   get 'scores/new'
 
   get 'scores/index'
+
+  get 'scores/testGet' => 'scores#testGet'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -20,7 +27,7 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
-  resources :scores
+  #resources :scores
 
   # Example resource route with options:
   #   resources :products do

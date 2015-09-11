@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150908104313) do
+ActiveRecord::Schema.define(version: 20150909035141) do
 
   create_table "scores", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(version: 20150908104313) do
     t.float    "dps"
     t.string   "player"
     t.integer  "duration"
+    t.string   "durationS"
+    t.string   "zone"
+    t.string   "enemy"
   end
 
 end
