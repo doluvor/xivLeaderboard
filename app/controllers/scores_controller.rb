@@ -10,7 +10,7 @@ class ScoresController < ApplicationController
   end
 
   def createPlain
-  	score = Score.create dps:params[:dps], player:params[:player], duration:params[:duration], durationS:params[:durationS], zone:params[:zone], enemy:params[:enemy]
+  	score = Score.create dps:params[:dps], player:params[:player], duration:params[:duration], durationS:params[:durationS], zone:params[:zone], enemy:params[:enemy], job:params[:job], charaID:params[:charaID]
 
   	render json: score, status: :ok
   end

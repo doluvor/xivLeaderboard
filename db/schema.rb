@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150909035141) do
+ActiveRecord::Schema.define(version: 20150912120936) do
 
   create_table "scores", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20150909035141) do
     t.string   "durationS"
     t.string   "zone"
     t.string   "enemy"
+    t.integer  "job"
+    t.integer  "charaID"
   end
 
 end
