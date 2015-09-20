@@ -11,11 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150912120936) do
+ActiveRecord::Schema.define(version: 20150920055607) do
 
-  create_table "scores", force: :cascade do |t|
+  create_table "encounters", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "duration"
+    t.string   "durationS"
+    t.string   "zone"
+    t.string   "enemy"
+  end
+
+  create_table "scores", force: :cascade do |t|
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.float    "dps"
     t.string   "player"
     t.integer  "duration"
@@ -24,6 +33,9 @@ ActiveRecord::Schema.define(version: 20150912120936) do
     t.string   "enemy"
     t.integer  "job"
     t.integer  "charaID"
+    t.integer  "encounter_id"
   end
+
+  add_index "scores", ["encounter_id"], name: "index_scores_on_encounter_id"
 
 end
