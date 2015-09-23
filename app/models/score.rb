@@ -7,5 +7,6 @@ class Score < ActiveRecord::Base
       return "MCH";
     else
       return "UNKNOWN"
+    end
   end
 end
