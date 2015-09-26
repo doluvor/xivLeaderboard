@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   get 'scores/createPlain' => 'scores#createPlain'
 
   post 'scores/create' => 'scores#create'
-
+post 'encounters/create'  => 'encounters#create'
   get 'scores/new'
-
+get 'encounters/index'
   get 'scores/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
