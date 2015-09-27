@@ -20,7 +20,7 @@ class EncountersController < ApplicationController
     encounter = Encounter.create duration:encounterData["duration"], durationS:encounterData["durationS"], zone:encounterData["zone"], enemy:encounterData["enemy"]
 
     encounterData["scores"].each do |scoreData|
-      score = Score.create dps:scoreData[:dps], player:scoreData[:player], job:scoreData[:job], charaID:scoreData[:charaID], encounter_id:encounter.id
+      score = Score.create dps:scoreData["dps"], player:scoreData["player"], job:scoreData["job"], charaID:scoreData["charaID"], encounter_id:encounter.id
     end
 
     render json: encounter, status: :ok
