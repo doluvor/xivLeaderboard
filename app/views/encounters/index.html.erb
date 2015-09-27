@@ -10,16 +10,18 @@
       <td>Enemy</td>
       <td>Zone</td>
     </tr>
-    <% @encounter.scores.each do |score| %>
-    <tr>
-      <td><%= score.charaID %></td>
-      <td><%= score.player %></td>
-      <td><%= number_with_precision(score.dps, precision: 0) %></td>
-      <td><%= score.jobString %></td>
-      <td><%= encounter.durationS %></td>
-      <td><%= encounter.enemy %></td>
-      <td><%= encounter.zone %></td>
-    </tr>
+    <% @encounters.each do |encounter| %>
+      <% encounter.scores.each do |score| %>
+      <tr>
+        <td><%= score.charaID %></td>
+        <td><%= score.player %></td>
+        <td><%= number_with_precision(score.dps, precision: 0) %></td>
+        <td><%= score.jobString %></td>
+        <td><%= encounter.durationS %></td>
+        <td><%= encounter.enemy %></td>
+        <td><%= encounter.zone %></td>
+      </tr>
+      <% end %>
     <% end %>
   </table>
 </div>

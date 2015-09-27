@@ -2,7 +2,7 @@ class EncountersController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:create]
 
   def index
-    @encounter = Encounter.last(10)
+    @encounters = Encounter.last(10)
   end
 
   def create
