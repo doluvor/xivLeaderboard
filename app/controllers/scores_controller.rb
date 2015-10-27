@@ -6,46 +6,29 @@ class ScoresController < ApplicationController
   end
 
   def index
-  	@scores = Score.all
+  	@scores = Score.last(60)
   end
 
   def createPlain
-  	score = Score.create dps:params[:dps], player:params[:player], duration:params[:duration], durationS:params[:durationS], zone:params[:zone], enemy:params[:enemy]
+  	score = Score.create dps:params[:dps], player:params[:player], duration:params[:duration], durationS:params[:durationS], zone:params[:zone], enemy:params[:enemy], job:params[:job], charaID:params[:charaID]
 
   	render json: score, status: :ok
   end
 
   def create
-  	#score = Score.create dps:params[:dps], player:params[:player], duration:params[:duration], durationS:params[:durationS], zone:params[:zone], enemy:params[:enemy]
 
   	decipher = OpenSSL::Cipher::AES.new(128, :CBC)
   	decipher.decrypt
-  	decipher.key = "this is key 12345"
-  	#decipher.iv = iv
+  	decipher.key = "this_is_key_1234"
+  	decipher.iv = "this_is_iv_12345"
 
-  	deciphered = decipher.update(params[:encrypted]) + decipher.final
+    data = Base64.decode64(URI.unescape(request.raw_post));
+  	deciphered = decipher.update(data) + decipher.final
 
   	scoreData = JSON.parse deciphered
 
-  	render plain: "#{scoreData["player"]} -- #{params[:encrypted]}", status: :ok
-  end
+    score = Score.create dps:scoreData["dps"], player:scoreData["player"], duration:scoreData["duration"], durationS:scoreData["durationS"], zone:scoreData["zone"], enemy:scoreData["enemy"], charaID:scoreData["charaID"], job:scoreData["job"]
 
-  def testGet
-  	uri = URI("http://localhost:3001/scores/create")
-
-  	raw = "{ \"dps\" : 100,
-  			\"player\" : \"测试1\" }"
-
-  	cipher = OpenSSL::Cipher::AES.new(128, :CBC)
-  	cipher.encrypt
-  	#key = cipher.random_key
-  	cipher.key = "this is key 12345"
-  	#iv = cipher.random_iv
-
-  	encrypted = cipher.update(raw) + cipher.final
-
-  	response = Net::HTTP.post_form uri, "raw" => raw, "encrypted" => encrypted
-
-  	render plain: response.body, status: :ok
+  	render json: score, status: :ok
   end
 end

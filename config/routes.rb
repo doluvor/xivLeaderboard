@@ -5,12 +5,10 @@ Rails.application.routes.draw do
   get 'scores/createPlain' => 'scores#createPlain'
 
   post 'scores/create' => 'scores#create'
-
+post 'encounters/create'  => 'encounters#create'
   get 'scores/new'
-
+get 'encounters/index'
   get 'scores/index'
-
-  get 'scores/testGet' => 'scores#testGet'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

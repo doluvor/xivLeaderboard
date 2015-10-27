@@ -47,3 +47,6 @@ group :development, :test do
   gem 'spring'
 end
 
+group :production do
+  gem 'mysql2', '~> 0.3.18'
+end
