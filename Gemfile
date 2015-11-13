@@ -1,4 +1,4 @@
-source 'https://ruby.taobao.org'
+# source 'https://ruby.taobao.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -33,10 +33,12 @@ gem 'twitter-bootstrap-rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 group :development, :test do
+
+  # Use Capistrano for deployment
+  gem 'capistrano-rails', '~> 1.1.1'
+  gem 'capistrano-passenger'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
